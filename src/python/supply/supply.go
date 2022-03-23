@@ -661,6 +661,9 @@ func (s *Supplier) RunPipUnvendored() error {
 
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
+		"-v",
+		"-v",
+		"-v",
 		"--ignore-installed",
 		"--exists-action=w",
 		"--src="+filepath.Join(s.Stager.DepDir(), "src"),
