@@ -855,21 +855,22 @@ func pipCommand() []string {
 	return []string{"python", "-m", "pip"}
 }
 
-//QQQ
-func (s *Supplier) runPipInstall2(args ...string) error {
-	installCmd := append(pipCommand2(), args...)
-	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
-}
-
-func pipCommand2() []string {
-	return []string{"cat"}
-}
-//not QQQ
-
 func (s *Supplier) runPipInstall(args ...string) error {
 	installCmd := append(append(pipCommand(), "install"), args...)
 	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
 }
+
+//QQQ
+func pipCommand2() []string {
+	return []string{"python", "-m", "pip"}
+}
+
+func (s *Supplier) runPipInstall2(args ...string) error {
+	installCmd := append(append(pipCommand2(), "install"), args...)
+	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
+}
+//not QQQ
+
 
 func (s *Supplier) formatVersion(version string) string {
 	verSlice := strings.Split(version, ".")
