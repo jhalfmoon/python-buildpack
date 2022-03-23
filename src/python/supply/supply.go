@@ -657,12 +657,12 @@ func (s *Supplier) RunPipUnvendored() error {
 		return err
 	}
 
-//	if err := s.runPipInstall2(
-//		requirementsPath,
-//	); err != nil {
-//		return fmt.Errorf("could not run foobar command: %v", err)
-//	}
-//
+	if err := s.runPipInstall2(
+		requirementsPath,
+	); err != nil {
+		return fmt.Errorf("could not run foobar command: %v", err)
+	}
+
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
 		"-v",
