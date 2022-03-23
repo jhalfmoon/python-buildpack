@@ -657,8 +657,11 @@ func (s *Supplier) RunPipUnvendored() error {
 		return err
 	}
 
-	//s.Log.BeginStep("Foo2 requirementspath2: %v", filepath.Join(s.Stager.DepDir(), "src"))
-    print(open(requirementsPath, 'r').read())
+	if err := s.runPipInstall2(
+		requirementsPath
+	); err != nil {
+		return fmt.Errorf("could not run pip: %v", err)
+	}
 
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
@@ -851,6 +854,17 @@ func pipCommand() []string {
 	}
 	return []string{"python", "-m", "pip"}
 }
+
+//QQQ
+func (s *Supplier) runPipInstall2(args ...string) error {
+	installCmd := append(pipCommand2(), args...)
+	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
+}
+
+func pipCommand2() []string {
+	return []string{"cat"}
+}
+//not QQQ
 
 func (s *Supplier) runPipInstall(args ...string) error {
 	installCmd := append(append(pipCommand(), "install"), args...)
