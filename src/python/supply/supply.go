@@ -627,7 +627,7 @@ func (s *Supplier) RunPipUnvendored() error {
 		return fmt.Errorf("could not read requirements.txt: %v", err)
 	}
 
-	s.Log.BeginStep("Foo requirementspath: %v", requirementsPath)
+	s.Log.BeginStep("Foo1 requirementspath: %v", requirementsPath)
 
 	distUtils := map[string][]string{}
 
@@ -656,6 +656,8 @@ func (s *Supplier) RunPipUnvendored() error {
 	if err := writePyDistUtils(distUtils); err != nil {
 		return err
 	}
+
+	s.Log.BeginStep("Foo2 requirementspath2: %v", filepath.Join(s.Stager.DepDir(), "src"))
 
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
