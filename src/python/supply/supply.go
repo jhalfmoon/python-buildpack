@@ -860,16 +860,16 @@ func (s *Supplier) runPipInstall(args ...string) error {
 	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
 }
 
-//QQQ
-func pipCommand() []string {
-	return []string{"cat"}
-}
-
-func (s *Supplier) runPipInstall2(args ...string) error {
-	installCmd := append( pipCommand2(), args...)
-	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
-}
-//not QQQ
+////QQQ
+//func pipCommand() []string {
+//	return []string{"cat"}
+//}
+//
+//func (s *Supplier) runPipInstall2(args ...string) error {
+//	installCmd := append( pipCommand2(), args...)
+//	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
+//}
+////not QQQ
 
 
 func (s *Supplier) formatVersion(version string) string {
