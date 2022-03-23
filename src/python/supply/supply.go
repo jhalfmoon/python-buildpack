@@ -657,6 +657,12 @@ func (s *Supplier) RunPipUnvendored() error {
 		return err
 	}
 
+	if err := s.runPipInstall2(
+		requirementsPath,
+	); err != nil {
+		return fmt.Errorf("could not run foobar command: %v", err)
+	}
+
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
 		"-v",
@@ -855,12 +861,8 @@ func (s *Supplier) runPipInstall(args ...string) error {
 }
 
 //QQQ
-func pipCommand2() []string {
-	return []string{"python", "-m", "pip"}
-}
-
 func (s *Supplier) runPipInstall2(args ...string) error {
-	installCmd := append(append(pipCommand2(), "install"), args...)
+	installCmd := append( "cat", args...)
 	return s.Command.Execute(s.Stager.BuildDir(), indentWriter(os.Stdout), indentWriter(os.Stderr), installCmd[0], installCmd[1:]...)
 }
 //not QQQ
