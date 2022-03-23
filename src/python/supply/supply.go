@@ -657,12 +657,11 @@ func (s *Supplier) RunPipUnvendored() error {
 		return err
 	}
 
-	s.Log.BeginStep("Foo2 requirementspath2: %v", filepath.Join(s.Stager.DepDir(), "src"))
+	//s.Log.BeginStep("Foo2 requirementspath2: %v", filepath.Join(s.Stager.DepDir(), "src"))
+    print(open(requirementsPath, 'r').read())
 
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
-		"-v",
-		"-v",
 		"-v",
 		"--ignore-installed",
 		"--exists-action=w",
