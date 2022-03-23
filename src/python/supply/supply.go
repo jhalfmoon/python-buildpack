@@ -627,7 +627,7 @@ func (s *Supplier) RunPipUnvendored() error {
 		return fmt.Errorf("could not read requirements.txt: %v", err)
 	}
 
-    return fmt.Errorf("Foo requirementspath: %v", requirementsPath)
+	s.Log.BeginStep("Foo requirementspath: %v", requirementsPath)
 
 	distUtils := map[string][]string{}
 
