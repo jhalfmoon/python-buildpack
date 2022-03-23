@@ -657,12 +657,6 @@ func (s *Supplier) RunPipUnvendored() error {
 		return err
 	}
 
-	if err := s.runPipInstall2(
-		requirementsPath
-	); err != nil {
-		return fmt.Errorf("could not run pip: %v", err)
-	}
-
 	if err := s.runPipInstall(
 		"-r", requirementsPath,
 		"-v",
