@@ -829,6 +829,7 @@ func (s *Supplier) shouldRunPip() (bool, string, error) {
 	}
 
 	requirementsPath := filepath.Join(s.Stager.BuildDir(), "requirements.txt")
+	s.Log.BeginStep("QQQ requirements file is at %s", requirementsPath)
 	if exists, err := libbuildpack.FileExists(requirementsPath); err != nil {
 		return false, "", fmt.Errorf("could not determine existence of requirements.txt: %v", err)
 	} else if !exists {
